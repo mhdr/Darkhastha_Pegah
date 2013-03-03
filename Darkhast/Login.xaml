@@ -1,0 +1,51 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="Darkhast.Login"
+        Title="ورود" Height="239" Width="401" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="5,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.15*"/>
+                <ColumnDefinition Width="0.85*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock TextWrapping="Wrap" Text="شناسه" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <telerik:RadComboBox x:Name="ComboBoxNames" HorizontalAlignment="Left" VerticalAlignment="Center" SelectedValuePath="BarghkarGUID"
+                                 MinWidth="250" Grid.Column="1" Margin="20,0,0,0" ItemTemplate="{DynamicResource DataTemplateNames}" IsEditable="False" TabIndex="0">
+            	<telerik:RadComboBox.Resources>
+            		<DataTemplate x:Key="DataTemplateNames">
+            			<StackPanel Orientation="Horizontal">
+            				<TextBlock TextWrapping="Wrap" Text="{Binding FirstName}" Margin="0,0,4,0"/>
+            				<TextBlock TextWrapping="Wrap" Text="{Binding LastName}" />
+            			</StackPanel>
+            		</DataTemplate>
+            	</telerik:RadComboBox.Resources>
+
+            </telerik:RadComboBox>
+        </Grid>
+
+
+        <Grid Margin="5,0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.15*"/>
+                <ColumnDefinition Width="0.85*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock TextWrapping="Wrap" Text="کلمه عبور" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+            <PasswordBox HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="200" Width="250" Grid.Column="1" Margin="20,0,0,0" Name="PasswordBox1" TabIndex="1" />
+
+        </Grid>
+        <telerik:RadButton Content="ورود" HorizontalAlignment="Left" Grid.Row="2" d:LayoutOverrides="Height" Width="70" Height="30" Margin="80,0,0,0" VerticalAlignment="Center" Name="ButtonLogin" Click="ButtonLogin_Click" IsDefault="True" TabIndex="2" />
+        <telerik:RadButton Content="بستن" HorizontalAlignment="Left"  Grid.Row="2" d:LayoutOverrides="Height" Width="70" Height="30" Margin="200,0,0,0" VerticalAlignment="Center" Name="ButtonExit" Click="ButtonExit_Click" IsCancel="True" TabIndex="3" />
+        <StatusBar  Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Name="StatusBar1"/>
+  
+    </Grid>
+</Window>

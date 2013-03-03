@@ -1,0 +1,959 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DarkhasthaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DarkhasthaModelStoreContainer">
+          <EntitySet Name="Bakhshha" EntityType="DarkhasthaModel.Store.Bakhshha" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Barghkarha" EntityType="DarkhasthaModel.Store.Barghkarha" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Darkhastha" EntityType="DarkhasthaModel.Store.Darkhastha" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Darkhastha_Log" EntityType="DarkhasthaModel.Store.Darkhastha_Log" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Dastgahha" EntityType="DarkhasthaModel.Store.Dastgahha" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EventLog" EntityType="DarkhasthaModel.Store.EventLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LoginsLog" EntityType="DarkhasthaModel.Store.LoginsLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MessageReceivers" EntityType="DarkhasthaModel.Store.MessageReceivers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Messages" EntityType="DarkhasthaModel.Store.Messages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MessagesDeletingStatus" EntityType="DarkhasthaModel.Store.MessagesDeletingStatus" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Darkhast_Barghkar" Association="DarkhasthaModel.Store.FK_Darkhast_Barghkar">
+            <End Role="Barghkarha" EntitySet="Barghkarha" />
+            <End Role="Darkhastha" EntitySet="Darkhastha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhast_Dastgah" Association="DarkhasthaModel.Store.FK_Darkhast_Dastgah">
+            <End Role="Dastgahha" EntitySet="Dastgahha" />
+            <End Role="Darkhastha" EntitySet="Darkhastha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhastha_Log_Barghkarha" Association="DarkhasthaModel.Store.FK_Darkhastha_Log_Barghkarha">
+            <End Role="Barghkarha" EntitySet="Barghkarha" />
+            <End Role="Darkhastha_Log" EntitySet="Darkhastha_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhastha_Log_Darkhastha" Association="DarkhasthaModel.Store.FK_Darkhastha_Log_Darkhastha">
+            <End Role="Darkhastha" EntitySet="Darkhastha" />
+            <End Role="Darkhastha_Log" EntitySet="Darkhastha_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhastha_Log_Dastgahha" Association="DarkhasthaModel.Store.FK_Darkhastha_Log_Dastgahha">
+            <End Role="Dastgahha" EntitySet="Dastgahha" />
+            <End Role="Darkhastha_Log" EntitySet="Darkhastha_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhastha_Log_LoginsLog" Association="DarkhasthaModel.Store.FK_Darkhastha_Log_LoginsLog">
+            <End Role="LoginsLog" EntitySet="LoginsLog" />
+            <End Role="Darkhastha_Log" EntitySet="Darkhastha_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dastgah_Bakhsh" Association="DarkhasthaModel.Store.FK_Dastgah_Bakhsh">
+            <End Role="Bakhshha" EntitySet="Bakhshha" />
+            <End Role="Dastgahha" EntitySet="Dastgahha" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoginsLog_Barghkarha" Association="DarkhasthaModel.Store.FK_LoginsLog_Barghkarha">
+            <End Role="Barghkarha" EntitySet="Barghkarha" />
+            <End Role="LoginsLog" EntitySet="LoginsLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageReceivers_Barghkarha" Association="DarkhasthaModel.Store.FK_MessageReceivers_Barghkarha">
+            <End Role="Barghkarha" EntitySet="Barghkarha" />
+            <End Role="MessageReceivers" EntitySet="MessageReceivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageReceivers_Messages" Association="DarkhasthaModel.Store.FK_MessageReceivers_Messages">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="MessageReceivers" EntitySet="MessageReceivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Barghkarha" Association="DarkhasthaModel.Store.FK_Messages_Barghkarha">
+            <End Role="Barghkarha" EntitySet="Barghkarha" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessagesDeletingStatus_Barghkarha" Association="DarkhasthaModel.Store.FK_MessagesDeletingStatus_Barghkarha">
+            <End Role="Barghkarha" EntitySet="Barghkarha" />
+            <End Role="MessagesDeletingStatus" EntitySet="MessagesDeletingStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessagesDeletingStatus_Messages" Association="DarkhasthaModel.Store.FK_MessagesDeletingStatus_Messages">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="MessagesDeletingStatus" EntitySet="MessagesDeletingStatus" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Bakhshha">
+          <Key>
+            <PropertyRef Name="BakhshGUID" />
+          </Key>
+          <Property Name="BakhshGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BakhshName" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Barghkarha">
+          <Key>
+            <PropertyRef Name="BarghkarGUID" />
+          </Key>
+          <Property Name="BarghkarGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Role" Type="int" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Darkhastha">
+          <Key>
+            <PropertyRef Name="DarkhastGUID" />
+          </Key>
+          <Property Name="DarkhastGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DarkhastName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ShomareFani" Type="nvarchar" MaxLength="100" />
+          <Property Name="DastgahGUID" Type="uniqueidentifier" />
+          <Property Name="VahedShomaresh" Type="nvarchar" MaxLength="100" />
+          <Property Name="TedadDarkhast" Type="int" Nullable="false" />
+          <Property Name="Tarikh" Type="datetime" />
+          <Property Name="Tozihat" Type="nvarchar" MaxLength="300" />
+          <Property Name="IsTrash" Type="int" Nullable="false" />
+          <Property Name="BarghkarGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Vaziat" Type="int" Nullable="false" />
+          <Property Name="TarikhDaryaftKala" Type="datetime" />
+          <Property Name="TarikhVorodKalaBeAnbar" Type="datetime" />
+          <Property Name="ShomareDarkhastTadbir" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Darkhastha_Log">
+          <Key>
+            <PropertyRef Name="DarkhastLogGUID" />
+          </Key>
+          <Property Name="DarkhastLogGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LoginGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Operation" Type="int" />
+          <Property Name="Date" Type="datetime2" Nullable="false" />
+          <Property Name="DarkhastGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DarkhastName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ShomareFani" Type="nvarchar" MaxLength="100" />
+          <Property Name="DastgahGUID" Type="uniqueidentifier" />
+          <Property Name="VahedShomaresh" Type="nvarchar" MaxLength="100" />
+          <Property Name="TedadDarkhast" Type="int" Nullable="false" />
+          <Property Name="Tarikh" Type="datetime" />
+          <Property Name="Tozihat" Type="nvarchar" MaxLength="300" />
+          <Property Name="IsTrash" Type="int" Nullable="false" />
+          <Property Name="BarghkarGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Vaziat" Type="int" Nullable="false" />
+          <Property Name="TarikhDaryaftKala" Type="datetime" />
+          <Property Name="TarikhVorodKalaBeAnbar" Type="datetime" />
+          <Property Name="ShomareDarkhastTadbir" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Dastgahha">
+          <Key>
+            <PropertyRef Name="DastgahGUID" />
+          </Key>
+          <Property Name="DastgahGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DastgahName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="BakhshGUID" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="EventGUID" />
+          </Key>
+          <Property Name="EventGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="50" />
+          <Property Name="EventMessage" Type="nvarchar" MaxLength="50" />
+          <Property Name="EventType" Type="int" />
+          <Property Name="Date" Type="datetime2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LoginsLog">
+          <Key>
+            <PropertyRef Name="LoginGUID" />
+          </Key>
+          <Property Name="LoginGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BarghkarGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LoginDate" Type="datetime2" />
+          <Property Name="LogoutDate" Type="datetime2" />
+        </EntityType>
+        <EntityType Name="MessageReceivers">
+          <Key>
+            <PropertyRef Name="MessageReceiverGUID" />
+          </Key>
+          <Property Name="MessageReceiverGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReceiverGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MessageGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReadDate" Type="datetime2" />
+        </EntityType>
+        <EntityType Name="Messages">
+          <Key>
+            <PropertyRef Name="MessageGUID" />
+          </Key>
+          <Property Name="MessageGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SenderGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="Body" Type="nvarchar" />
+          <Property Name="Date" Type="datetime2" />
+          <Property Name="Status" Type="int" />
+          <Property Name="IsReply" Type="bit" Nullable="false" />
+          <Property Name="ReplyGUID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="MessagesDeletingStatus">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MessageGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BarghkarGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Darkhast_Barghkar">
+          <End Role="Barghkarha" Type="DarkhasthaModel.Store.Barghkarha" Multiplicity="1" />
+          <End Role="Darkhastha" Type="DarkhasthaModel.Store.Darkhastha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhast_Dastgah">
+          <End Role="Dastgahha" Type="DarkhasthaModel.Store.Dastgahha" Multiplicity="0..1" />
+          <End Role="Darkhastha" Type="DarkhasthaModel.Store.Darkhastha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dastgahha">
+              <PropertyRef Name="DastgahGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha">
+              <PropertyRef Name="DastgahGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhastha_Log_Barghkarha">
+          <End Role="Barghkarha" Type="DarkhasthaModel.Store.Barghkarha" Multiplicity="1" />
+          <End Role="Darkhastha_Log" Type="DarkhasthaModel.Store.Darkhastha_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha_Log">
+              <PropertyRef Name="BarghkarGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhastha_Log_Darkhastha">
+          <End Role="Darkhastha" Type="DarkhasthaModel.Store.Darkhastha" Multiplicity="1" />
+          <End Role="Darkhastha_Log" Type="DarkhasthaModel.Store.Darkhastha_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Darkhastha">
+              <PropertyRef Name="DarkhastGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha_Log">
+              <PropertyRef Name="DarkhastGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhastha_Log_Dastgahha">
+          <End Role="Dastgahha" Type="DarkhasthaModel.Store.Dastgahha" Multiplicity="0..1" />
+          <End Role="Darkhastha_Log" Type="DarkhasthaModel.Store.Darkhastha_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dastgahha">
+              <PropertyRef Name="DastgahGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha_Log">
+              <PropertyRef Name="DastgahGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhastha_Log_LoginsLog">
+          <End Role="LoginsLog" Type="DarkhasthaModel.Store.LoginsLog" Multiplicity="1" />
+          <End Role="Darkhastha_Log" Type="DarkhasthaModel.Store.Darkhastha_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginsLog">
+              <PropertyRef Name="LoginGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha_Log">
+              <PropertyRef Name="LoginGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dastgah_Bakhsh">
+          <End Role="Bakhshha" Type="DarkhasthaModel.Store.Bakhshha" Multiplicity="1" />
+          <End Role="Dastgahha" Type="DarkhasthaModel.Store.Dastgahha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bakhshha">
+              <PropertyRef Name="BakhshGUID" />
+            </Principal>
+            <Dependent Role="Dastgahha">
+              <PropertyRef Name="BakhshGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LoginsLog_Barghkarha">
+          <End Role="Barghkarha" Type="DarkhasthaModel.Store.Barghkarha" Multiplicity="1" />
+          <End Role="LoginsLog" Type="DarkhasthaModel.Store.LoginsLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="LoginsLog">
+              <PropertyRef Name="BarghkarGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageReceivers_Barghkarha">
+          <End Role="Barghkarha" Type="DarkhasthaModel.Store.Barghkarha" Multiplicity="1" />
+          <End Role="MessageReceivers" Type="DarkhasthaModel.Store.MessageReceivers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="MessageReceivers">
+              <PropertyRef Name="ReceiverGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageReceivers_Messages">
+          <End Role="Messages" Type="DarkhasthaModel.Store.Messages" Multiplicity="1" />
+          <End Role="MessageReceivers" Type="DarkhasthaModel.Store.MessageReceivers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="MessageGUID" />
+            </Principal>
+            <Dependent Role="MessageReceivers">
+              <PropertyRef Name="MessageGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Barghkarha">
+          <End Role="Barghkarha" Type="DarkhasthaModel.Store.Barghkarha" Multiplicity="1" />
+          <End Role="Messages" Type="DarkhasthaModel.Store.Messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="SenderGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessagesDeletingStatus_Barghkarha">
+          <End Role="Barghkarha" Type="DarkhasthaModel.Store.Barghkarha" Multiplicity="1" />
+          <End Role="MessagesDeletingStatus" Type="DarkhasthaModel.Store.MessagesDeletingStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="MessagesDeletingStatus">
+              <PropertyRef Name="BarghkarGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessagesDeletingStatus_Messages">
+          <End Role="Messages" Type="DarkhasthaModel.Store.Messages" Multiplicity="1" />
+          <End Role="MessagesDeletingStatus" Type="DarkhasthaModel.Store.MessagesDeletingStatus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="MessageGUID" />
+            </Principal>
+            <Dependent Role="MessagesDeletingStatus">
+              <PropertyRef Name="MessageGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DarkhasthaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bakhshhas" EntityType="DarkhasthaModel.Bakhshha" />
+          <EntitySet Name="Barghkarhas" EntityType="DarkhasthaModel.Barghkarha" />
+          <EntitySet Name="Darkhasthas" EntityType="DarkhasthaModel.Darkhastha" />
+          <EntitySet Name="Dastgahhas" EntityType="DarkhasthaModel.Dastgahha" />
+          <EntitySet Name="MessageReceivers" EntityType="DarkhasthaModel.MessageReceiver" />
+          <EntitySet Name="Messages" EntityType="DarkhasthaModel.Message" />
+          <AssociationSet Name="FK_Dastgah_Bakhsh" Association="DarkhasthaModel.FK_Dastgah_Bakhsh">
+            <End Role="Bakhshha" EntitySet="Bakhshhas" />
+            <End Role="Dastgahha" EntitySet="Dastgahhas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhast_Barghkar" Association="DarkhasthaModel.FK_Darkhast_Barghkar">
+            <End Role="Barghkarha" EntitySet="Barghkarhas" />
+            <End Role="Darkhastha" EntitySet="Darkhasthas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageReceivers_Barghkarha" Association="DarkhasthaModel.FK_MessageReceivers_Barghkarha">
+            <End Role="Barghkarha" EntitySet="Barghkarhas" />
+            <End Role="MessageReceivers" EntitySet="MessageReceivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Barghkarha" Association="DarkhasthaModel.FK_Messages_Barghkarha">
+            <End Role="Barghkarha" EntitySet="Barghkarhas" />
+            <End Role="Messages" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhast_Dastgah" Association="DarkhasthaModel.FK_Darkhast_Dastgah">
+            <End Role="Dastgahha" EntitySet="Dastgahhas" />
+            <End Role="Darkhastha" EntitySet="Darkhasthas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessageReceivers_Messages" Association="DarkhasthaModel.FK_MessageReceivers_Messages">
+            <End Role="Messages" EntitySet="Messages" />
+            <End Role="MessageReceivers" EntitySet="MessageReceivers" />
+          </AssociationSet>
+          <EntitySet Name="LoginsLogs" EntityType="DarkhasthaModel.LoginsLog" />
+          <AssociationSet Name="FK_LoginsLog_Barghkarha" Association="DarkhasthaModel.FK_LoginsLog_Barghkarha">
+            <End Role="Barghkarha" EntitySet="Barghkarhas" />
+            <End Role="LoginsLog" EntitySet="LoginsLogs" />
+          </AssociationSet>
+          <EntitySet Name="Darkhastha_Log" EntityType="DarkhasthaModel.Darkhastha_Log" />
+          <AssociationSet Name="FK_Darkhastha_Log_Barghkarha" Association="DarkhasthaModel.FK_Darkhastha_Log_Barghkarha">
+            <End Role="Barghkarha" EntitySet="Barghkarhas" />
+            <End Role="Darkhastha_Log" EntitySet="Darkhastha_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhastha_Log_Darkhastha" Association="DarkhasthaModel.FK_Darkhastha_Log_Darkhastha">
+            <End Role="Darkhastha" EntitySet="Darkhasthas" />
+            <End Role="Darkhastha_Log" EntitySet="Darkhastha_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhastha_Log_Dastgahha" Association="DarkhasthaModel.FK_Darkhastha_Log_Dastgahha">
+            <End Role="Dastgahha" EntitySet="Dastgahhas" />
+            <End Role="Darkhastha_Log" EntitySet="Darkhastha_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhastha_Log_LoginsLog" Association="DarkhasthaModel.FK_Darkhastha_Log_LoginsLog">
+            <End Role="LoginsLog" EntitySet="LoginsLogs" />
+            <End Role="Darkhastha_Log" EntitySet="Darkhastha_Log" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Darkhastha_Log_Darkhastha1" Association="DarkhasthaModel.FK_Darkhastha_Log_Darkhastha1">
+            <End Role="Darkhastha" EntitySet="Darkhasthas" />
+            <End Role="Darkhastha_Log" EntitySet="Darkhastha_Log" />
+          </AssociationSet>
+          <EntitySet Name="MessagesDeletingStatus" EntityType="DarkhasthaModel.MessagesDeletingStatu" />
+          <AssociationSet Name="FK_MessagesDeletingStatus_Barghkarha" Association="DarkhasthaModel.FK_MessagesDeletingStatus_Barghkarha">
+            <End Role="Barghkarha" EntitySet="Barghkarhas" />
+            <End Role="MessagesDeletingStatu" EntitySet="MessagesDeletingStatus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessagesDeletingStatus_Messages" Association="DarkhasthaModel.FK_MessagesDeletingStatus_Messages">
+            <End Role="Message" EntitySet="Messages" />
+            <End Role="MessagesDeletingStatu" EntitySet="MessagesDeletingStatus" />
+          </AssociationSet>
+          <EntitySet Name="EventLogs" EntityType="DarkhasthaModel.EventLog" />
+        </EntityContainer>
+        <EntityType Name="Bakhshha">
+          <Key>
+            <PropertyRef Name="BakhshGUID" />
+          </Key>
+          <Property Name="BakhshGUID" Type="Guid" Nullable="false" />
+          <Property Name="BakhshName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Dastgahhas" Relationship="DarkhasthaModel.FK_Dastgah_Bakhsh" FromRole="Bakhshha" ToRole="Dastgahha" />
+        </EntityType>
+        <EntityType Name="Barghkarha">
+          <Key>
+            <PropertyRef Name="BarghkarGUID" />
+          </Key>
+          <Property Name="BarghkarGUID" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="Password" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Darkhasthas" Relationship="DarkhasthaModel.FK_Darkhast_Barghkar" FromRole="Barghkarha" ToRole="Darkhastha" />
+          <NavigationProperty Name="MessageReceivers" Relationship="DarkhasthaModel.FK_MessageReceivers_Barghkarha" FromRole="Barghkarha" ToRole="MessageReceivers" />
+          <NavigationProperty Name="Messages" Relationship="DarkhasthaModel.FK_Messages_Barghkarha" FromRole="Barghkarha" ToRole="Messages" />
+          <NavigationProperty Name="LoginsLogs" Relationship="DarkhasthaModel.FK_LoginsLog_Barghkarha" FromRole="Barghkarha" ToRole="LoginsLog" />
+          <NavigationProperty Name="Darkhastha_Log" Relationship="DarkhasthaModel.FK_Darkhastha_Log_Barghkarha" FromRole="Barghkarha" ToRole="Darkhastha_Log" />
+          <NavigationProperty Name="MessagesDeletingStatus" Relationship="DarkhasthaModel.FK_MessagesDeletingStatus_Barghkarha" FromRole="Barghkarha" ToRole="MessagesDeletingStatu" />
+        </EntityType>
+        <EntityType Name="Darkhastha">
+          <Key>
+            <PropertyRef Name="DarkhastGUID" />
+          </Key>
+          <Property Name="DarkhastGUID" Type="Guid" Nullable="false" />
+          <Property Name="DarkhastName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ShomareFani" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="DastgahGUID" Type="Guid" />
+          <Property Name="VahedShomaresh" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="TedadDarkhast" Type="Int32" Nullable="false" />
+          <Property Name="Tarikh" Type="DateTime" />
+          <Property Name="Tozihat" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="IsTrash" Type="Int32" Nullable="false" />
+          <Property Name="BarghkarGUID" Type="Guid" Nullable="false" />
+          <Property Name="Vaziat" Type="Int32" Nullable="false" />
+          <Property Name="TarikhDaryaftKala" Type="DateTime" />
+          <Property Name="TarikhVorodKalaBeAnbar" Type="DateTime" />
+          <Property Name="ShomareDarkhastTadbir" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Barghkarha" Relationship="DarkhasthaModel.FK_Darkhast_Barghkar" FromRole="Darkhastha" ToRole="Barghkarha" />
+          <NavigationProperty Name="Dastgahha" Relationship="DarkhasthaModel.FK_Darkhast_Dastgah" FromRole="Darkhastha" ToRole="Dastgahha" />
+          <NavigationProperty Name="Darkhastha_Log" Relationship="DarkhasthaModel.FK_Darkhastha_Log_Darkhastha" FromRole="Darkhastha" ToRole="Darkhastha_Log" />
+          <NavigationProperty Name="Darkhastha_Log_1" Relationship="DarkhasthaModel.FK_Darkhastha_Log_Darkhastha1" FromRole="Darkhastha" ToRole="Darkhastha_Log" />
+        </EntityType>
+        <EntityType Name="Dastgahha">
+          <Key>
+            <PropertyRef Name="DastgahGUID" />
+          </Key>
+          <Property Name="DastgahGUID" Type="Guid" Nullable="false" />
+          <Property Name="DastgahName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="BakhshGUID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Bakhshha" Relationship="DarkhasthaModel.FK_Dastgah_Bakhsh" FromRole="Dastgahha" ToRole="Bakhshha" />
+          <NavigationProperty Name="Darkhasthas" Relationship="DarkhasthaModel.FK_Darkhast_Dastgah" FromRole="Dastgahha" ToRole="Darkhastha" />
+          <NavigationProperty Name="Darkhastha_Log" Relationship="DarkhasthaModel.FK_Darkhastha_Log_Dastgahha" FromRole="Dastgahha" ToRole="Darkhastha_Log" />
+        </EntityType>
+        <EntityType Name="MessageReceiver">
+          <Key>
+            <PropertyRef Name="MessageReceiverGUID" />
+          </Key>
+          <Property Name="MessageReceiverGUID" Type="Guid" Nullable="false" />
+          <Property Name="ReceiverGUID" Type="Guid" Nullable="false" />
+          <Property Name="MessageGUID" Type="Guid" Nullable="false" />
+          <Property Name="ReadDate" Type="DateTime" />
+          <NavigationProperty Name="Barghkarha" Relationship="DarkhasthaModel.FK_MessageReceivers_Barghkarha" FromRole="MessageReceivers" ToRole="Barghkarha" />
+          <NavigationProperty Name="Message" Relationship="DarkhasthaModel.FK_MessageReceivers_Messages" FromRole="MessageReceivers" ToRole="Messages" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="MessageGUID" />
+          </Key>
+          <Property Name="MessageGUID" Type="Guid" Nullable="false" />
+          <Property Name="SenderGUID" Type="Guid" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Body" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" />
+          <NavigationProperty Name="Barghkarha" Relationship="DarkhasthaModel.FK_Messages_Barghkarha" FromRole="Messages" ToRole="Barghkarha" />
+          <NavigationProperty Name="MessageReceivers" Relationship="DarkhasthaModel.FK_MessageReceivers_Messages" FromRole="Messages" ToRole="MessageReceivers" />
+          <Property Type="Int32" Name="Status" />
+          <Property Type="Boolean" Name="IsReply" Nullable="false" />
+          <Property Type="Guid" Name="ReplyGUID" Nullable="false" />
+          <NavigationProperty Name="MessagesDeletingStatus" Relationship="DarkhasthaModel.FK_MessagesDeletingStatus_Messages" FromRole="Message" ToRole="MessagesDeletingStatu" />
+        </EntityType>
+        <Association Name="FK_Dastgah_Bakhsh">
+          <End Role="Bakhshha" Type="DarkhasthaModel.Bakhshha" Multiplicity="1" />
+          <End Role="Dastgahha" Type="DarkhasthaModel.Dastgahha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bakhshha">
+              <PropertyRef Name="BakhshGUID" />
+            </Principal>
+            <Dependent Role="Dastgahha">
+              <PropertyRef Name="BakhshGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhast_Barghkar">
+          <End Role="Barghkarha" Type="DarkhasthaModel.Barghkarha" Multiplicity="1" />
+          <End Role="Darkhastha" Type="DarkhasthaModel.Darkhastha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageReceivers_Barghkarha">
+          <End Role="Barghkarha" Type="DarkhasthaModel.Barghkarha" Multiplicity="1" />
+          <End Role="MessageReceivers" Type="DarkhasthaModel.MessageReceiver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="MessageReceivers">
+              <PropertyRef Name="ReceiverGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Barghkarha">
+          <End Role="Barghkarha" Type="DarkhasthaModel.Barghkarha" Multiplicity="1" />
+          <End Role="Messages" Type="DarkhasthaModel.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="Messages">
+              <PropertyRef Name="SenderGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhast_Dastgah">
+          <End Role="Dastgahha" Type="DarkhasthaModel.Dastgahha" Multiplicity="0..1" />
+          <End Role="Darkhastha" Type="DarkhasthaModel.Darkhastha" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dastgahha">
+              <PropertyRef Name="DastgahGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha">
+              <PropertyRef Name="DastgahGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessageReceivers_Messages">
+          <End Role="Messages" Type="DarkhasthaModel.Message" Multiplicity="1" />
+          <End Role="MessageReceivers" Type="DarkhasthaModel.MessageReceiver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Messages">
+              <PropertyRef Name="MessageGUID" />
+            </Principal>
+            <Dependent Role="MessageReceivers">
+              <PropertyRef Name="MessageGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LoginsLog">
+          <Key>
+            <PropertyRef Name="LoginGUID" />
+          </Key>
+          <Property Type="Guid" Name="LoginGUID" Nullable="false" />
+          <Property Type="Guid" Name="BarghkarGUID" Nullable="false" />
+          <Property Type="DateTime" Name="LoginDate" />
+          <Property Type="DateTime" Name="LogoutDate" />
+          <NavigationProperty Name="Barghkarha" Relationship="DarkhasthaModel.FK_LoginsLog_Barghkarha" FromRole="LoginsLog" ToRole="Barghkarha" />
+          <NavigationProperty Name="Darkhastha_Log" Relationship="DarkhasthaModel.FK_Darkhastha_Log_LoginsLog" FromRole="LoginsLog" ToRole="Darkhastha_Log" />
+        </EntityType>
+        <Association Name="FK_LoginsLog_Barghkarha">
+          <End Type="DarkhasthaModel.Barghkarha" Role="Barghkarha" Multiplicity="1" />
+          <End Type="DarkhasthaModel.LoginsLog" Role="LoginsLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="LoginsLog">
+              <PropertyRef Name="BarghkarGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Darkhastha_Log">
+          <Key>
+            <PropertyRef Name="DarkhastLogGUID" />
+          </Key>
+          <Property Type="Guid" Name="DarkhastLogGUID" Nullable="false" />
+          <Property Type="Guid" Name="LoginGUID" Nullable="false" />
+          <Property Type="Int32" Name="Operation" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="Guid" Name="DarkhastGUID" Nullable="false" />
+          <Property Type="String" Name="DarkhastName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ShomareFani" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="DastgahGUID" />
+          <Property Type="String" Name="VahedShomaresh" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TedadDarkhast" Nullable="false" />
+          <Property Type="DateTime" Name="Tarikh" />
+          <Property Type="String" Name="Tozihat" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="IsTrash" Nullable="false" />
+          <Property Type="Guid" Name="BarghkarGUID" Nullable="false" />
+          <Property Type="Int32" Name="Vaziat" Nullable="false" />
+          <Property Type="DateTime" Name="TarikhDaryaftKala" />
+          <Property Type="DateTime" Name="TarikhVorodKalaBeAnbar" />
+          <Property Type="String" Name="ShomareDarkhastTadbir" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Barghkarha" Relationship="DarkhasthaModel.FK_Darkhastha_Log_Barghkarha" FromRole="Darkhastha_Log" ToRole="Barghkarha" />
+          <NavigationProperty Name="Darkhastha" Relationship="DarkhasthaModel.FK_Darkhastha_Log_Darkhastha" FromRole="Darkhastha_Log" ToRole="Darkhastha" />
+          <NavigationProperty Name="Dastgahha" Relationship="DarkhasthaModel.FK_Darkhastha_Log_Dastgahha" FromRole="Darkhastha_Log" ToRole="Dastgahha" />
+          <NavigationProperty Name="LoginsLog" Relationship="DarkhasthaModel.FK_Darkhastha_Log_LoginsLog" FromRole="Darkhastha_Log" ToRole="LoginsLog" />
+          <NavigationProperty Name="Darkhastha_1" Relationship="DarkhasthaModel.FK_Darkhastha_Log_Darkhastha1" FromRole="Darkhastha_Log" ToRole="Darkhastha" />
+        </EntityType>
+        <Association Name="FK_Darkhastha_Log_Barghkarha">
+          <End Type="DarkhasthaModel.Barghkarha" Role="Barghkarha" Multiplicity="1" />
+          <End Type="DarkhasthaModel.Darkhastha_Log" Role="Darkhastha_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha_Log">
+              <PropertyRef Name="BarghkarGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhastha_Log_Darkhastha">
+          <End Type="DarkhasthaModel.Darkhastha" Role="Darkhastha" Multiplicity="1" />
+          <End Type="DarkhasthaModel.Darkhastha_Log" Role="Darkhastha_Log" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Darkhastha">
+              <PropertyRef Name="DarkhastGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha_Log">
+              <PropertyRef Name="DarkhastLogGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhastha_Log_Dastgahha">
+          <End Type="DarkhasthaModel.Dastgahha" Role="Dastgahha" Multiplicity="0..1" />
+          <End Type="DarkhasthaModel.Darkhastha_Log" Role="Darkhastha_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dastgahha">
+              <PropertyRef Name="DastgahGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha_Log">
+              <PropertyRef Name="DastgahGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhastha_Log_LoginsLog">
+          <End Type="DarkhasthaModel.LoginsLog" Role="LoginsLog" Multiplicity="1" />
+          <End Type="DarkhasthaModel.Darkhastha_Log" Role="Darkhastha_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoginsLog">
+              <PropertyRef Name="LoginGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha_Log">
+              <PropertyRef Name="LoginGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Darkhastha_Log_Darkhastha1">
+          <End Type="DarkhasthaModel.Darkhastha" Role="Darkhastha" Multiplicity="1" />
+          <End Type="DarkhasthaModel.Darkhastha_Log" Role="Darkhastha_Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Darkhastha">
+              <PropertyRef Name="DarkhastGUID" />
+            </Principal>
+            <Dependent Role="Darkhastha_Log">
+              <PropertyRef Name="DarkhastGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MessagesDeletingStatu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="MessageGUID" Nullable="false" />
+          <Property Type="Guid" Name="BarghkarGUID" Nullable="false" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <NavigationProperty Name="Barghkarha" Relationship="DarkhasthaModel.FK_MessagesDeletingStatus_Barghkarha" FromRole="MessagesDeletingStatu" ToRole="Barghkarha" />
+          <NavigationProperty Name="Message" Relationship="DarkhasthaModel.FK_MessagesDeletingStatus_Messages" FromRole="MessagesDeletingStatu" ToRole="Message" />
+        </EntityType>
+        <Association Name="FK_MessagesDeletingStatus_Barghkarha">
+          <End Type="DarkhasthaModel.Barghkarha" Role="Barghkarha" Multiplicity="1" />
+          <End Type="DarkhasthaModel.MessagesDeletingStatu" Role="MessagesDeletingStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Barghkarha">
+              <PropertyRef Name="BarghkarGUID" />
+            </Principal>
+            <Dependent Role="MessagesDeletingStatu">
+              <PropertyRef Name="BarghkarGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MessagesDeletingStatus_Messages">
+          <End Type="DarkhasthaModel.Message" Role="Message" Multiplicity="1" />
+          <End Type="DarkhasthaModel.MessagesDeletingStatu" Role="MessagesDeletingStatu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Message">
+              <PropertyRef Name="MessageGUID" />
+            </Principal>
+            <Dependent Role="MessagesDeletingStatu">
+              <PropertyRef Name="MessageGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="EventLog">
+          <Key>
+            <PropertyRef Name="EventGUID" />
+          </Key>
+          <Property Type="Guid" Name="EventGUID" Nullable="false" />
+          <Property Type="String" Name="EventMessage" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="EventType" />
+          <Property Type="DateTime" Name="Date" Nullable="false" />
+          <Property Type="String" Name="MachineName" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DarkhasthaModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="Bakhshhas"><EntityTypeMapping TypeName="DarkhasthaModel.Bakhshha"><MappingFragment StoreEntitySet="Bakhshha">
+            <ScalarProperty Name="BakhshGUID" ColumnName="BakhshGUID" />
+            <ScalarProperty Name="BakhshName" ColumnName="BakhshName" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Barghkarhas"><EntityTypeMapping TypeName="DarkhasthaModel.Barghkarha"><MappingFragment StoreEntitySet="Barghkarha">
+            <ScalarProperty Name="BarghkarGUID" ColumnName="BarghkarGUID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Role" ColumnName="Role" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Darkhasthas"><EntityTypeMapping TypeName="DarkhasthaModel.Darkhastha"><MappingFragment StoreEntitySet="Darkhastha">
+            <ScalarProperty Name="DarkhastGUID" ColumnName="DarkhastGUID" />
+            <ScalarProperty Name="DarkhastName" ColumnName="DarkhastName" />
+            <ScalarProperty Name="ShomareFani" ColumnName="ShomareFani" />
+            <ScalarProperty Name="DastgahGUID" ColumnName="DastgahGUID" />
+            <ScalarProperty Name="VahedShomaresh" ColumnName="VahedShomaresh" />
+            <ScalarProperty Name="TedadDarkhast" ColumnName="TedadDarkhast" />
+            <ScalarProperty Name="Tarikh" ColumnName="Tarikh" />
+            <ScalarProperty Name="Tozihat" ColumnName="Tozihat" />
+            <ScalarProperty Name="IsTrash" ColumnName="IsTrash" />
+            <ScalarProperty Name="BarghkarGUID" ColumnName="BarghkarGUID" />
+            <ScalarProperty Name="Vaziat" ColumnName="Vaziat" />
+            <ScalarProperty Name="TarikhDaryaftKala" ColumnName="TarikhDaryaftKala" />
+            <ScalarProperty Name="TarikhVorodKalaBeAnbar" ColumnName="TarikhVorodKalaBeAnbar" />
+            <ScalarProperty Name="ShomareDarkhastTadbir" ColumnName="ShomareDarkhastTadbir" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Dastgahhas"><EntityTypeMapping TypeName="DarkhasthaModel.Dastgahha"><MappingFragment StoreEntitySet="Dastgahha">
+            <ScalarProperty Name="DastgahGUID" ColumnName="DastgahGUID" />
+            <ScalarProperty Name="DastgahName" ColumnName="DastgahName" />
+            <ScalarProperty Name="BakhshGUID" ColumnName="BakhshGUID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="MessageReceivers"><EntityTypeMapping TypeName="DarkhasthaModel.MessageReceiver"><MappingFragment StoreEntitySet="MessageReceivers">
+            <ScalarProperty Name="MessageReceiverGUID" ColumnName="MessageReceiverGUID" />
+            <ScalarProperty Name="ReceiverGUID" ColumnName="ReceiverGUID" />
+            <ScalarProperty Name="MessageGUID" ColumnName="MessageGUID" />
+            <ScalarProperty Name="ReadDate" ColumnName="ReadDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Messages"><EntityTypeMapping TypeName="DarkhasthaModel.Message"><MappingFragment StoreEntitySet="Messages">
+            <ScalarProperty Name="ReplyGUID" ColumnName="ReplyGUID" />
+                <ScalarProperty Name="IsReply" ColumnName="IsReply" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MessageGUID" ColumnName="MessageGUID" />
+            <ScalarProperty Name="SenderGUID" ColumnName="SenderGUID" />
+            <ScalarProperty Name="Subject" ColumnName="Subject" />
+            <ScalarProperty Name="Body" ColumnName="Body" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="LoginsLogs">
+            <EntityTypeMapping TypeName="DarkhasthaModel.LoginsLog">
+              <MappingFragment StoreEntitySet="LoginsLog">
+                <ScalarProperty Name="LogoutDate" ColumnName="LogoutDate" />
+                <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+                <ScalarProperty Name="BarghkarGUID" ColumnName="BarghkarGUID" />
+                <ScalarProperty Name="LoginGUID" ColumnName="LoginGUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Darkhastha_Log">
+            <EntityTypeMapping TypeName="DarkhasthaModel.Darkhastha_Log">
+              <MappingFragment StoreEntitySet="Darkhastha_Log">
+                <ScalarProperty Name="ShomareDarkhastTadbir" ColumnName="ShomareDarkhastTadbir" />
+                <ScalarProperty Name="TarikhVorodKalaBeAnbar" ColumnName="TarikhVorodKalaBeAnbar" />
+                <ScalarProperty Name="TarikhDaryaftKala" ColumnName="TarikhDaryaftKala" />
+                <ScalarProperty Name="Vaziat" ColumnName="Vaziat" />
+                <ScalarProperty Name="BarghkarGUID" ColumnName="BarghkarGUID" />
+                <ScalarProperty Name="IsTrash" ColumnName="IsTrash" />
+                <ScalarProperty Name="Tozihat" ColumnName="Tozihat" />
+                <ScalarProperty Name="Tarikh" ColumnName="Tarikh" />
+                <ScalarProperty Name="TedadDarkhast" ColumnName="TedadDarkhast" />
+                <ScalarProperty Name="VahedShomaresh" ColumnName="VahedShomaresh" />
+                <ScalarProperty Name="DastgahGUID" ColumnName="DastgahGUID" />
+                <ScalarProperty Name="ShomareFani" ColumnName="ShomareFani" />
+                <ScalarProperty Name="DarkhastName" ColumnName="DarkhastName" />
+                <ScalarProperty Name="DarkhastGUID" ColumnName="DarkhastGUID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="LoginGUID" ColumnName="LoginGUID" />
+                <ScalarProperty Name="DarkhastLogGUID" ColumnName="DarkhastLogGUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MessagesDeletingStatus">
+            <EntityTypeMapping TypeName="DarkhasthaModel.MessagesDeletingStatu">
+              <MappingFragment StoreEntitySet="MessagesDeletingStatus">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="BarghkarGUID" ColumnName="BarghkarGUID" />
+                <ScalarProperty Name="MessageGUID" ColumnName="MessageGUID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventLogs">
+            <EntityTypeMapping TypeName="DarkhasthaModel.EventLog">
+              <MappingFragment StoreEntitySet="EventLog">
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="EventMessage" ColumnName="EventMessage" />
+                <ScalarProperty Name="EventGUID" ColumnName="EventGUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model">
+        <EntityTypeShape EntityType="DarkhasthaModel.Bakhshha" Width="1.5" PointX="1.5" PointY="0.75" Height="1.5803364408016205" IsExpanded="true" />
+        <EntityTypeShape EntityType="DarkhasthaModel.Barghkarha" Width="1.5" PointX="0.75" PointY="6.25" Height="2.5290543081363026" IsExpanded="true" />
+        <EntityTypeShape EntityType="DarkhasthaModel.Darkhastha" Width="1.5" PointX="4" PointY="5" Height="4.426490042805673" IsExpanded="true" />
+        <EntityTypeShape EntityType="DarkhasthaModel.Dastgahha" Width="1.5" PointX="0.75" PointY="3.5" Height="1.9598235877354941" IsExpanded="true" />
+        <EntityTypeShape EntityType="DarkhasthaModel.MessageReceiver" Width="2.125" PointX="7.125" PointY="8.875" Height="2.1495671612024303" IsExpanded="true" />
+        <EntityTypeShape EntityType="DarkhasthaModel.Message" Width="1.5" PointX="4.75" PointY="13.75" Height="3.0982850285371164" IsExpanded="true" />
+        <AssociationConnector Association="DarkhasthaModel.FK_Dastgah_Bakhsh" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.875" PointY="2.3303364408016205" />
+          <ConnectorPoint PointX="1.875" PointY="3.5" />
+        </AssociationConnector>
+        <AssociationConnector Association="DarkhasthaModel.FK_Darkhast_Barghkar" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="8.2333021428356954" />
+          <ConnectorPoint PointX="3.8229166666666665" PointY="8.2333021428356954" />
+          <ConnectorPoint PointX="3.9895833333333335" PointY="8.2333021428356954" />
+          <ConnectorPoint PointX="4" PointY="8.2333021428356954" />
+        </AssociationConnector>
+        <AssociationConnector Association="DarkhasthaModel.FK_MessageReceivers_Barghkarha" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.2718253302001954" PointY="9.3482850285371129" />
+          <ConnectorPoint PointX="1.2718253302001954" PointY="10.254141993710782" />
+          <ConnectorPoint PointX="1.4933335325113935" PointY="10.254141993710782" />
+          <ConnectorPoint PointX="1.66000019917806" PointY="10.254141993710782" />
+          <ConnectorPoint PointX="1.86125259958903" PointY="10.254141993710782" />
+          <ConnectorPoint PointX="2.0279192662556969" PointY="10.254141993710782" />
+          <ConnectorPoint PointX="3.8229166666666665" PointY="10.254141993710782" />
+          <ConnectorPoint PointX="3.9895833333333335" PointY="10.254141993710782" />
+          <ConnectorPoint PointX="5.822916666666667" PointY="10.254141993710782" />
+          <ConnectorPoint PointX="5.989583333333333" PointY="10.254141993710782" />
+          <ConnectorPoint PointX="7.125" PointY="10.254141993710782" />
+        </AssociationConnector>
+        <AssociationConnector Association="DarkhasthaModel.FK_Messages_Barghkarha" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5766668658447267" PointY="9.3482850285371129" />
+          <ConnectorPoint PointX="1.5766668658447267" PointY="15.299142514268558" />
+          <ConnectorPoint PointX="4.75" PointY="15.299142514268558" />
+        </AssociationConnector>
+        <AssociationConnector Association="DarkhasthaModel.FK_Darkhast_Dastgah" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.3247835806012151" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="5.3247835806012143" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="5.3247835806012151" />
+          <ConnectorPoint PointX="3.8229166666666665" PointY="5.3247835806012143" />
+          <ConnectorPoint PointX="3.9895833333333335" PointY="5.3247835806012151" />
+          <ConnectorPoint PointX="4" PointY="5.3247835806012151" />
+        </AssociationConnector>
+        <AssociationConnector Association="DarkhasthaModel.FK_MessageReceivers_Messages" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.90625" PointY="13.75" />
+          <ConnectorPoint PointX="5.90625" PointY="9.8403135182582275" />
+          <ConnectorPoint PointX="7.125" PointY="9.8403135182582275" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DarkhasthaModel.LoginsLog" Width="1.5" PointX="3.875" PointY="10.75" Height="2.1495671612024303" />
+        <AssociationConnector Association="DarkhasthaModel.FK_LoginsLog_Barghkarha" >
+          <ConnectorPoint PointX="1.9445859329223634" PointY="9.3482850285371129" />
+          <ConnectorPoint PointX="1.9445859329223634" PointY="11.824783580601215" />
+          <ConnectorPoint PointX="3.875" PointY="11.824783580601215" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DarkhasthaModel.Darkhastha_Log" Width="1.5" PointX="7.125" PointY="1.625" Height="5.1854643366734194" />
+        <AssociationConnector Association="DarkhasthaModel.FK_Darkhastha_Log_Barghkarha" >
+          <ConnectorPoint PointX="2.25" PointY="7.2103990714178465" />
+          <ConnectorPoint PointX="2.625" PointY="7.2103990714178465" />
+          <ConnectorPoint PointX="2.625" PointY="3.3694125071342853" />
+          <ConnectorPoint PointX="7.125" PointY="3.3694125071342853" />
+        </AssociationConnector>
+        <AssociationConnector Association="DarkhasthaModel.FK_Darkhastha_Log_Darkhastha" >
+          <ConnectorPoint PointX="5.5" PointY="6.0001039550701769" />
+          <ConnectorPoint PointX="7.125" PointY="6.0001039550701769" />
+        </AssociationConnector>
+        <AssociationConnector Association="DarkhasthaModel.FK_Darkhastha_Log_Dastgahha" >
+          <ConnectorPoint PointX="2.25" PointY="4.21875" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="4.2187499999999991" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="4.21875" />
+          <ConnectorPoint PointX="3.8229166666666665" PointY="4.2187499999999991" />
+          <ConnectorPoint PointX="3.9895833333333335" PointY="4.21875" />
+          <ConnectorPoint PointX="7.125" PointY="4.21875" />
+        </AssociationConnector>
+        <AssociationConnector Association="DarkhasthaModel.FK_Darkhastha_Log_LoginsLog" >
+          <ConnectorPoint PointX="3.90625" PointY="10.75" />
+          <ConnectorPoint PointX="3.90625" PointY="3.8362447751481872" />
+          <ConnectorPoint PointX="7.125" PointY="3.8362447751481872" />
+        </AssociationConnector>
+        <AssociationConnector Association="DarkhasthaModel.FK_Darkhastha_Log_Darkhastha1" >
+          <ConnectorPoint PointX="5.5" PointY="5.4375519775350885" />
+          <ConnectorPoint PointX="7.125" PointY="5.4375519775350885" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DarkhasthaModel.MessagesDeletingStatu" Width="1.875" PointX="8.125" PointY="13" Height="2.1495671612024303" />
+        <AssociationConnector Association="DarkhasthaModel.FK_MessagesDeletingStatus_Barghkarha" >
+          <ConnectorPoint PointX="0.96698379455566419" PointY="9.3482850285371129" />
+          <ConnectorPoint PointX="0.96698379455566419" PointY="13.34375" />
+          <ConnectorPoint PointX="1.4933335325113935" PointY="13.34375" />
+          <ConnectorPoint PointX="1.66000019917806" PointY="13.34375" />
+          <ConnectorPoint PointX="5.822916666666667" PointY="13.34375" />
+          <ConnectorPoint PointX="5.989583333333333" PointY="13.34375" />
+          <ConnectorPoint PointX="8.125" PointY="13.34375" />
+        </AssociationConnector>
+        <AssociationConnector Association="DarkhasthaModel.FK_MessagesDeletingStatus_Messages" >
+          <ConnectorPoint PointX="6.25" PointY="14.449783580601215" />
+          <ConnectorPoint PointX="8.125" PointY="14.449783580601215" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="DarkhasthaModel.EventLog" Width="1.5" PointX="4.375" PointY="0.75" Height="1.770080014268558" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

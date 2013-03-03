@@ -1,0 +1,15 @@
+﻿<Window x:Class="Darkhast.WindowAbout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="درباره" Height="128.677" Width="410.031" WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+    <Grid FlowDirection="RightToLeft">
+
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="برنامه ثبت درخواست ها - ساخته شده توسط واحد برق پگاه گیلان" VerticalAlignment="Center" Margin="20,15,0,0"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="نسخه : ۱.۴" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="تاریخ اولین انتشار : ۸ فروردین ۱۳۹۱" VerticalAlignment="Center" Margin="20,0,0,0"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="تاریخ آخرین انتشار : ۱۷ خرداد ۱۳۹۱" VerticalAlignment="Center" Margin="20,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,8 @@
+﻿<Window x:Class="Darkhast.WindowSearchShomareDarkhastTadbir"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WindowSearchShomareDarkhastTadbir" Height="187.015" Width="449.908">
+    <Grid>
+        
+    </Grid>
+</Window>

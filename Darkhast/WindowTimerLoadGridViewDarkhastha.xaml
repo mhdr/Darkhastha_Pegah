@@ -1,0 +1,20 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Darkhast.WindowTimerLoadGridViewDarkhastha"
+        Title="بارگذاری خودکار" Height="136.062" Width="469.108" Loaded="Window_Loaded"
+    Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+    <Grid FlowDirection="RightToLeft">
+        <StackPanel Orientation="Horizontal">
+            <TextBlock  HorizontalAlignment="Center" VerticalAlignment="Center"
+                       ToolTip="این تایمر در زمان بیکاری کامپیوتر فعال می شود و اطلاعات جدید را به صورت خودکار بارگذاری می کند" 
+                        Text="دوره بارگذاری" Margin="10,0,0,0" />
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">(ثانیه)</TextBlock>
+            <telerik:RadNumericUpDown Width="150" HorizontalAlignment="Center" VerticalAlignment="Center" IsInteger="True"
+                                      Name="NumericUpDownTimerPeriod" Margin="5,0,0,0" ValueChanged="NumericUpDownTimerPeriod_ValueChanged" KeyUp="NumericUpDownTimerPeriod_KeyUp" />
+            <CheckBox Content="فعال" HorizontalAlignment="Center" VerticalAlignment="Center" Name="CheckBoxTimerActive" Margin="25,0,0,0" Checked="CheckBoxTimerActive_Checked" Unchecked="CheckBoxTimerActive_Unchecked" Click="CheckBoxTimerActive_Click"/>
+            <telerik:RadButton x:Name="ButtonSave" Content="ذخیره" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="40,0,0,0" Width="70" Height="30" Click="ButtonSave_Click" IsEnabled="False"/>
+
+        </StackPanel>
+    </Grid>
+</Window>

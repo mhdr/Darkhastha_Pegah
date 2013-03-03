@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Window
+	x:Class="Darkhast.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="درخواست"
+	Height="430"
+	Width="769" xmlns:my="clr-namespace:TarikhFA;assembly=TarikhFA" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+	mc:Ignorable="d" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my1="clr-namespace:Darkhast" xmlns:my2="clr-namespace:Darkhast.Lib"
+	Loaded="Window_Loaded"
+	WindowStartupLocation="CenterScreen"
+	WindowState="Maximized" Closing="Window_Closing" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+    <Window.Resources>
+        <my2:GridViewStyle
+			x:Key="gridViewInTrashStyle">
+            <my2:GridViewStyle.InTrashStyle>
+                <Style
+					TargetType="telerik:GridViewRow">
+                    <Setter
+						Property="Background"
+						Value="Pink" />
+                </Style>
+            </my2:GridViewStyle.InTrashStyle>
+            <my2:GridViewStyle.TaeedShodeStyle>
+                <Style TargetType="telerik:GridViewRow">
+                    <Setter Property="Background" Value="PaleGreen"/>
+                </Style>
+            </my2:GridViewStyle.TaeedShodeStyle>
+            <my2:GridViewStyle.TaeedNashodeStyle>
+                <Style TargetType="telerik:GridViewRow">
+                    <Setter Property="Background" Value="LightGray"/>
+                </Style>
+            </my2:GridViewStyle.TaeedNashodeStyle>
+            <my2:GridViewStyle.DarHaleBarresiStyle>
+                <Style TargetType="telerik:GridViewRow">
+                </Style>
+            </my2:GridViewStyle.DarHaleBarresiStyle>
+        </my2:GridViewStyle>
+    </Window.Resources>
+    <Grid
+		FlowDirection="RightToLeft">
+        <DockPanel>
+            <telerik:RadRibbonView
+				Name="RibbonView1"
+                DockPanel.Dock="Top"
+                HorizontalAlignment="Stretch"
+				ApplicationButtonImageSource="pegah.jpg"
+				SelectionChanged="RadRibbonView_SelectionChanged" Margin="0,0,0,1.585" d:LayoutOverrides="Height"
+                >
+                <telerik:RadRibbonTab
+					Header="خانه"
+					Name="RibbonTabHome"
+					MinWidth="50">
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Name="RibbonButtonAdd"
+							Content="درخواست جدید"
+							MinWidth="60"
+							HorizontalContentAlignment="Center"
+							Click="RibbonButtonAdd_Click" />
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Content="ویرایش"
+							MinWidth="60"
+							Name="RibbonButtonEdit"
+							HorizontalContentAlignment="Center"
+							IsEnabled="False"
+							Click="RibbonButtonEdit_Click" />
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Content="حذف"
+							MinWidth="60"
+							Name="RibbonButtonDelete"
+							HorizontalContentAlignment="Center"
+							Click="RibbonButtonDelete_Click"
+							IsEnabled="False" />
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonDropDownButton
+							Content="جستجو"
+							Name="RibbonDropDownButtonSearch"
+							HorizontalContentAlignment="Center"
+							MinWidth="60"
+							DropDownOpening="RibbonDropDownButtonSearch_DropDownOpening">
+                            <telerik:RadDropDownButton.DropDownContent>
+                                <telerik:RadContextMenu>
+                                    <telerik:RadMenuItem
+										Header="نام کالا"
+										Name="MenuItemSearchDarkhastName"
+										Click="MenuItemSearchDarkhastName_Click" />
+                                    <telerik:RadMenuItem
+										Header="شماره فنی"
+										Name="MenuItemSearchShomareFani"
+										Click="MenuItemSearchShomareFani_Click" />
+                                    <telerik:RadMenuItem
+										Header="تاریخ درخواست"
+										Name="MenuItemSearchTarikhDarkhast" Click="MenuItemSearchTarikhDarkhast_Click" />
+                                    <telerik:RadMenuItem
+										Header="توضیحات"
+										Name="MenuItemSearchTozihat" Click="MenuItemSearchTozihat_Click" />
+                                    <telerik:RadMenuItem
+										Header="پاک کردن جستجو"
+										Name="MenuItemClearSearch"
+										IsEnabled="False"
+										Click="MenuItemClearSearch_Click" />
+                                </telerik:RadContextMenu>
+                            </telerik:RadDropDownButton.DropDownContent>
+                        </telerik:RadRibbonDropDownButton>
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton MinWidth="70" Name="RibbonButtonDastgaha" Content="دستگاه ها"
+                                                 HorizontalContentAlignment="Center" Click="RibbonButtonDastgaha_Click" />
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Name="RibbonButtonReloadGridViewDarkhastha"
+							Content="بارگذاری مجدد"
+							MinWidth="65"
+							HorizontalContentAlignment="Center" Click="RibbonButtonReloadGridViewDarkhastha_Click" />
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonToggleButton Name="RibbonToggleButtonDaryaftShod" Content="دریافت شد" MinWidth="70"
+                                                 HorizontalContentAlignment="Center" IsEnabled="False" Click="RibbonToggleButtonDaryaftShod_Click" />
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:Separator/>
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton x:Name="RibbonButtonAbout" Content="درباره" 
+                                                 HorizontalContentAlignment="Center" MinWidth="60" Click="RibbonButtonAbout_Click" />
+                    </telerik:RadRibbonGroup>
+
+                </telerik:RadRibbonTab>
+                <telerik:RadRibbonTab
+					Header="ابزار ها"
+					Name="RibbonTabTools"
+					MinWidth="60">
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Name="RibbonButtonChangePassword"
+							Content="تغییر کلمه عبور"
+							MinWidth="65"
+							HorizontalContentAlignment="Center" Click="RibbonButtonChangePassword_Click" />
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Name="RibbonButtonClearIsolatedStorage"
+							Content="بازنشانی تنظیمات"
+							MinWidth="70"
+							HorizontalContentAlignment="Center"
+                            ToolTip="تنظیمات المان های واسط گرفیکی را بازنشانی می کند" Click="RibbonButtonClearIsolatedStorage_Click" />
+                    </telerik:RadRibbonGroup>
+
+                    <!--<telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Name="RibbonButtonTimerSettings"
+							Content="بارگذاری خودکار"
+							MinWidth="65"
+							HorizontalContentAlignment="Center" Click="RibbonButtonTimerSettings_Click" />
+                    </telerik:RadRibbonGroup>-->
+                </telerik:RadRibbonTab>
+
+                <telerik:RadRibbonTab
+					Header="بیرون بردن"
+					Name="RibbonTabExport"
+					MinWidth="80">
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonDropDownButton
+							Name="RibbonDropButtonCopySelectedCell"
+							Content="کپی سلول"
+							MinWidth="70"
+							HorizontalContentAlignment="Center">
+                            <telerik:RadDropDownButton.DropDownContent>
+                                <telerik:RadContextMenu>
+                                    <telerik:RadMenuItem
+										Header="نام کالا"
+										Name="MenuItemCopyKalaName" Click="MenuItemCopyKalaName_Click" />
+                                    <telerik:RadMenuItem
+										Header="نام کالا (حروف عربی)"
+										Name="MenuItemCopyKalaNameArabi" Click="MenuItemCopyKalaNameArabi_Click" />
+                                    <telerik:RadMenuItem
+										Header="شماره فنی"
+										Name="MenuItemCopyShomareFani" Click="MenuItemCopyShomareFani_Click" />
+                                    <telerik:RadMenuItem
+										Header="تعداد درخواست"
+										Name="MenuItemCopyTedadDarkhast" Click="MenuItemCopyTedadDarkhast_Click" />
+                                    <telerik:RadMenuItem
+										Header="توضیحات"
+										Name="MenuItemCopyTozihat"
+										Click="MenuItemCopyTozihat_Click" />
+                                </telerik:RadContextMenu>
+                            </telerik:RadDropDownButton.DropDownContent>
+                        </telerik:RadRibbonDropDownButton>
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton Name="RibbonButtonExportToText" Content="خروجی به Text" MinWidth="60" HorizontalContentAlignment="Center" Click="RibbonButtonExportToText_Click" />
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton Name="RibbonButtonExportToCsv" Content="خروجی به CSV" MinWidth="60" HorizontalContentAlignment="Center" Click="RibbonButtonExportToCsv_Click" />
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton Name="RibbonButtonExportToHtml" Content="خروجی به HTML" MinWidth="60" HorizontalContentAlignment="Center" Click="RibbonButtonExportToHtml_Click" />
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton Name="RibbonButtonExportToExcel" Content="خروجی به اکسل" MinWidth="60" HorizontalContentAlignment="Center" Click="RibbonButtonExportToExcel_Click" />
+                    </telerik:RadRibbonGroup>
+
+                </telerik:RadRibbonTab>
+
+                <telerik:RadRibbonTab
+                    Header="مدیریت درخواست ها"
+                    Name="RibbonTabManagment"
+                    MinWidth="90">
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton Name="RibbonButtonTaeed" Content="تائید" MinWidth="60" HorizontalContentAlignment="Center" Click="RibbonButtonTaeed_Click" IsEnabled="False" />
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton Name="RibbonButtonAdamTaeed" Content="عدم تائید" MinWidth="60" HorizontalContentAlignment="Center" Click="RibbonButtonAdamTaeed_Click" IsEnabled="False" />
+                    </telerik:RadRibbonGroup>
+
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton Name="RibbonButtonShomareDarkhastTadbir" Content="شماره درخواست تدبیر" 
+                                                 MinWidth="60" HorizontalContentAlignment="Center" 
+                                                 Click="RibbonButtonShomareDarkhastTadbir_Click"  IsEnabled="False"/>
+                    </telerik:RadRibbonGroup>
+                </telerik:RadRibbonTab>
+
+                <telerik:RadRibbonTab
+					Header="سطل زباله"
+					Name="RibbonTabTrash"
+					MinWidth="80">
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Name="RibbonButtonMoveOutOfTrash"
+							Content="حذف"
+							MinWidth="60"
+							HorizontalContentAlignment="Center"
+							Click="RibbonButtonMoveOutOfTrash_Click" />
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Name="RibbonButtonRestore"
+							Content="بازیابی"
+							MinWidth="60"
+							HorizontalContentAlignment="Center"
+							Click="RibbonButtonRestore_Click" />
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Name="RibbonButtonMoveAllOutOfTrash"
+							Content="خالی کردن سطل زباله"
+							MinWidth="60"
+							HorizontalContentAlignment="Center"
+							Click="RibbonButtonMoveAllOutOfTrash_Click" />
+                    </telerik:RadRibbonGroup>
+                    <telerik:RadRibbonGroup>
+                        <telerik:RadRibbonButton
+							Name="RibbonButtonRestoreAll"
+							Content="بازیابی همه"
+							MinWidth="60"
+							HorizontalContentAlignment="Center"
+							Click="RibbonButtonRestoreAll_Click" />
+                    </telerik:RadRibbonGroup>
+                </telerik:RadRibbonTab>
+            </telerik:RadRibbonView>
+            <telerik:RadGridView
+				x:Name="GridViewDarkhastha"
+                HorizontalAlignment="Stretch"
+                IsSynchronizedWithCurrentItem="True"
+				DataLoadMode="Asynchronous"
+				AutoGenerateColumns="False"
+				CanUserDeleteRows="False"
+				CanUserInsertRows="False"
+                ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                ScrollViewer.VerticalScrollBarVisibility="Auto"
+				RowDetailsVisibilityMode="Collapsed"
+                EnableColumnVirtualization="False"
+                EnableRowVirtualization="True"
+				SelectionChanged="GridViewDarkhastha_SelectionChanged"
+                DataLoaded="GridViewDarkhastha_DataLoaded"
+				RowStyleSelector="{StaticResource ResourceKey=gridViewInTrashStyle}"
+                telerik:PersistenceManager.StorageId="gridview"
+                HorizontalContentAlignment="Stretch">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewToggleRowDetailsColumn />
+                    <telerik:GridViewDataColumn
+						IsReadOnly="True"
+                        TextAlignment="Center"
+                        DataMemberBinding="{Binding DarkhastName}"
+                        MinWidth="300"
+						>
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">نام کالا</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn
+						IsReadOnly="True"
+                        MinWidth="150"
+                        DataMemberBinding="{Binding ShomareFani}"
+                        TextAlignment="Center">
+                        <!--<telerik:GridViewDataColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ShomareFani}" 
+                                           HorizontalAlignment="Center" TextAlignment="Center"/>
+                            </DataTemplate>
+                        </telerik:GridViewDataColumn.CellTemplate>-->
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">شماره فني</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+
+                    <telerik:GridViewDataColumn
+						DataMemberBinding="{Binding BakhshName}"
+						MinWidth="100"
+						IsReadOnly="True"
+						TextAlignment="Center">
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">نام بخش</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+
+                    <telerik:GridViewDataColumn
+						DataMemberBinding="{Binding DastgahName}"
+						MinWidth="100"
+						IsReadOnly="True"
+						TextAlignment="Center">
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">نام دستگاه</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn
+						DataMemberBinding="{Binding VahedShomaresh}"
+						MinWidth="90"
+						IsReadOnly="True"
+						TextAlignment="Center">
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">واحد شمارش</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn
+						DataMemberBinding="{Binding TedadDarkhast}"
+						MinWidth="50"
+						IsReadOnly="True"
+						TextAlignment="Center">
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">تعداد</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn
+						DataMemberBinding="{Binding BarghkarFullName}"
+						MinWidth="110"
+						IsReadOnly="True"
+						TextAlignment="Center">
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">درخواست کننده</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn
+						DataMemberBinding="{Binding Tarikh2}"
+						MinWidth="100"
+						IsReadOnly="True"
+						TextAlignment="Center">
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">تاريخ</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+                    <telerik:GridViewDataColumn
+						DataMemberBinding="{Binding VaziatName}"
+						MinWidth="110"
+						IsReadOnly="True"
+						TextAlignment="Center">
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">وضعيت درخواست</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+
+
+                    <telerik:GridViewDataColumn
+						DataMemberBinding="{Binding ShomareDarkhastTadbir}"
+						MinWidth="100"
+						IsReadOnly="True"
+						TextAlignment="Center">
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">شماره درخواست تدبیر</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+
+                    <telerik:GridViewDataColumn
+						DataMemberBinding="{Binding TarikhDaryaftKala2}"
+						MinWidth="100"
+						IsReadOnly="True"
+						TextAlignment="Center">
+                        <telerik:GridViewDataColumn.Header>
+                            <TextBlock
+								HorizontalAlignment="Center"
+								VerticalAlignment="Center">تاریخ دریافت کالا</TextBlock>
+                        </telerik:GridViewDataColumn.Header>
+                    </telerik:GridViewDataColumn>
+
+                </telerik:RadGridView.Columns>
+                <telerik:RadGridView.RowDetailsTemplate>
+                    <DataTemplate>
+                        <StackPanel
+							Orientation="Horizontal"
+							Margin="10,10,10,10">
+                            <TextBlock
+								Text="توضیحات: "
+								FontWeight="Bold" />
+                            <TextBlock
+								Text="{Binding Tozihat}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </telerik:RadGridView.RowDetailsTemplate>
+
+            </telerik:RadGridView>
+        </DockPanel>
+
+        <!--<telerik:RadDataPager
+			Name="DataPagerDarkhastha"
+			Source="{Binding Items, ElementName=GridViewDarkhastha}"
+			PageSize="18"
+			HorizontalAlignment="Stretch"
+			VerticalAlignment="Bottom"
+			DisplayMode="All"
+			IsTotalItemCountFixed="True" />-->
+    </Grid>
+</Window>

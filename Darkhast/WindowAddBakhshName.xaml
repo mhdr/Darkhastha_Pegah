@@ -1,0 +1,20 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" x:Class="Darkhast.WindowAddBakhshName"
+        Title="بخش جدید" Height="131.631" Width="360.554" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+    <Grid FlowDirection="RightToLeft">
+    	<Grid.RowDefinitions>
+    		<RowDefinition Height="0.8*"/>
+    		<RowDefinition Height="0.2*"/>
+    	</Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal">
+        	<TextBlock TextWrapping="Wrap" Text="نام بخش" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0"/>
+        	<TextBox x:Name="TextBoxBakhshName" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="200" Margin="0,0,10,0" TabIndex="0" />
+        	<telerik:RadButton x:Name="ButtonAddBakhshName" Content="ثبت" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="70" MinHeight="30" Click="ButtonAddBakhshName_Click" IsDefault="True" TabIndex="1" />
+            
+        </StackPanel>
+        <StatusBar x:Name="StatusBar1" Grid.Row="1"/>
+    </Grid>
+</Window>

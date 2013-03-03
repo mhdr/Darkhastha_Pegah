@@ -1,0 +1,26 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" mc:Ignorable="d" x:Class="Darkhast.DialogBoxConfrimDelete"
+        Title="حذف" Height="128.677" Width="293.354"
+        ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" Loaded="Window_Loaded"
+    Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+    <Grid FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,0" Name="TextBlockMessage"
+                   TextWrapping="Wrap"
+                   d:LayoutOverrides="Height" VerticalAlignment="Center"/>
+
+
+        <telerik:RadButton x:Name="ButtonYes" Content="بلی" Margin="40,0,0,0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="70" Height="30" IsDefault="True" Click="ButtonYes_Click" />
+
+        <telerik:RadButton x:Name="ButtonNo" Content="خیر" Margin="150,0,0,0" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" MinWidth="70" Height="30" IsCancel="True" Click="ButtonNo_Click" />
+
+
+    </Grid>
+</Window>
